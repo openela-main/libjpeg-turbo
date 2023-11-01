@@ -1,0 +1,819 @@
+diff --git a/simd/jccolext-mmx.asm b/simd/jccolext-mmx.asm
+index 96a0372..3e95a2e 100644
+--- a/simd/jccolext-mmx.asm
++++ b/simd/jccolext-mmx.asm
+@@ -42,6 +42,7 @@
+         global  EXTN(jsimd_rgb_ycc_convert_mmx)
+ 
+ EXTN(jsimd_rgb_ycc_convert_mmx):
++        _endbr32
+         push    ebp
+         mov     eax,esp                         ; eax = original ebp
+         sub     esp, byte 4
+diff --git a/simd/jccolext-sse2-64.asm b/simd/jccolext-sse2-64.asm
+index 8e4642d..1b8e990 100644
+--- a/simd/jccolext-sse2-64.asm
++++ b/simd/jccolext-sse2-64.asm
+@@ -41,6 +41,7 @@
+         global  EXTN(jsimd_rgb_ycc_convert_sse2)
+ 
+ EXTN(jsimd_rgb_ycc_convert_sse2):
++        _endbr64
+         push    rbp
+         mov     rax,rsp                         ; rax = original rbp
+         sub     rsp, byte 4
+diff --git a/simd/jccolext-sse2.asm b/simd/jccolext-sse2.asm
+index cc38e98..847497c 100644
+--- a/simd/jccolext-sse2.asm
++++ b/simd/jccolext-sse2.asm
+@@ -41,6 +41,7 @@
+         global  EXTN(jsimd_rgb_ycc_convert_sse2)
+ 
+ EXTN(jsimd_rgb_ycc_convert_sse2):
++        _endbr32
+         push    ebp
+         mov     eax,esp                         ; eax = original ebp
+         sub     esp, byte 4
+diff --git a/simd/jcgryext-mmx.asm b/simd/jcgryext-mmx.asm
+index 1c1b8d8..cbf349c 100644
+--- a/simd/jcgryext-mmx.asm
++++ b/simd/jcgryext-mmx.asm
+@@ -43,6 +43,7 @@
+         global  EXTN(jsimd_rgb_gray_convert_mmx)
+ 
+ EXTN(jsimd_rgb_gray_convert_mmx):
++        _endbr32
+         push    ebp
+         mov     eax,esp                         ; eax = original ebp
+         sub     esp, byte 4
+diff --git a/simd/jcgryext-sse2-64.asm b/simd/jcgryext-sse2-64.asm
+index 541355a..6fa714b 100644
+--- a/simd/jcgryext-sse2-64.asm
++++ b/simd/jcgryext-sse2-64.asm
+@@ -41,6 +41,7 @@
+         global  EXTN(jsimd_rgb_gray_convert_sse2)
+ 
+ EXTN(jsimd_rgb_gray_convert_sse2):
++        _endbr64
+         push    rbp
+         mov     rax,rsp                         ; rax = original rbp
+         sub     rsp, byte 4
+diff --git a/simd/jcgryext-sse2.asm b/simd/jcgryext-sse2.asm
+index cd16dd1..6da4f24 100644
+--- a/simd/jcgryext-sse2.asm
++++ b/simd/jcgryext-sse2.asm
+@@ -43,6 +43,7 @@
+         global  EXTN(jsimd_rgb_gray_convert_sse2)
+ 
+ EXTN(jsimd_rgb_gray_convert_sse2):
++        _endbr32
+         push    ebp
+         mov     eax,esp                         ; eax = original ebp
+         sub     esp, byte 4
+diff --git a/simd/jchuff-sse2-64.asm b/simd/jchuff-sse2-64.asm
+index b1144d1..216b7ed 100644
+--- a/simd/jchuff-sse2-64.asm
++++ b/simd/jchuff-sse2-64.asm
+@@ -186,6 +186,7 @@ EXTN(jconst_huff_encode_one_block):
+         global  EXTN(jsimd_huff_encode_one_block_sse2)
+ 
+ EXTN(jsimd_huff_encode_one_block_sse2):
++        _endbr64
+         push    rbp
+         mov     rax,rsp                         ; rax = original rbp
+         sub     rsp, byte 4
+diff --git a/simd/jchuff-sse2.asm b/simd/jchuff-sse2.asm
+index b81db75..0537a2c 100644
+--- a/simd/jchuff-sse2.asm
++++ b/simd/jchuff-sse2.asm
+@@ -182,6 +182,7 @@ EXTN(jconst_huff_encode_one_block):
+         global  EXTN(jsimd_huff_encode_one_block_sse2)
+ 
+ EXTN(jsimd_huff_encode_one_block_sse2):
++        _endbr32
+         push    ebp
+         mov     eax,esp                         ; eax = original ebp
+         sub     esp, byte 4
+diff --git a/simd/jcsample-mmx.asm b/simd/jcsample-mmx.asm
+index 6cd544e..2834d1a 100644
+--- a/simd/jcsample-mmx.asm
++++ b/simd/jcsample-mmx.asm
+@@ -42,6 +42,7 @@
+         global  EXTN(jsimd_h2v1_downsample_mmx)
+ 
+ EXTN(jsimd_h2v1_downsample_mmx):
++        _endbr32
+         push    ebp
+         mov     ebp,esp
+ ;       push    ebx             ; unused
+@@ -184,6 +185,7 @@ EXTN(jsimd_h2v1_downsample_mmx):
+         global  EXTN(jsimd_h2v2_downsample_mmx)
+ 
+ EXTN(jsimd_h2v2_downsample_mmx):
++        _endbr32
+         push    ebp
+         mov     ebp,esp
+ ;       push    ebx             ; unused
+diff --git a/simd/jcsample-sse2-64.asm b/simd/jcsample-sse2-64.asm
+index 40ee15f..336d259 100644
+--- a/simd/jcsample-sse2-64.asm
++++ b/simd/jcsample-sse2-64.asm
+@@ -43,6 +43,7 @@
+         global  EXTN(jsimd_h2v1_downsample_sse2)
+ 
+ EXTN(jsimd_h2v1_downsample_sse2):
++        _endbr64
+         push    rbp
+         mov     rax,rsp
+         mov     rbp,rsp
+@@ -187,6 +188,7 @@ EXTN(jsimd_h2v1_downsample_sse2):
+         global  EXTN(jsimd_h2v2_downsample_sse2)
+ 
+ EXTN(jsimd_h2v2_downsample_sse2):
++        _endbr64
+         push    rbp
+         mov     rax,rsp
+         mov     rbp,rsp
+diff --git a/simd/jcsample-sse2.asm b/simd/jcsample-sse2.asm
+index 83c9d15..685e428 100644
+--- a/simd/jcsample-sse2.asm
++++ b/simd/jcsample-sse2.asm
+@@ -42,6 +42,7 @@
+         global  EXTN(jsimd_h2v1_downsample_sse2)
+ 
+ EXTN(jsimd_h2v1_downsample_sse2):
++        _endbr32
+         push    ebp
+         mov     ebp,esp
+ ;       push    ebx             ; unused
+@@ -197,6 +198,7 @@ EXTN(jsimd_h2v1_downsample_sse2):
+         global  EXTN(jsimd_h2v2_downsample_sse2)
+ 
+ EXTN(jsimd_h2v2_downsample_sse2):
++        _endbr32
+         push    ebp
+         mov     ebp,esp
+ ;       push    ebx             ; unused
+diff --git a/simd/jdcolext-mmx.asm b/simd/jdcolext-mmx.asm
+index 21e34f6..428f1be 100644
+--- a/simd/jdcolext-mmx.asm
++++ b/simd/jdcolext-mmx.asm
+@@ -42,6 +42,7 @@
+         global  EXTN(jsimd_ycc_rgb_convert_mmx)
+ 
+ EXTN(jsimd_ycc_rgb_convert_mmx):
++        _endbr32
+         push    ebp
+         mov     eax,esp                         ; eax = original ebp
+         sub     esp, byte 4
+diff --git a/simd/jdcolext-sse2-64.asm b/simd/jdcolext-sse2-64.asm
+index 4634066..90ca172 100644
+--- a/simd/jdcolext-sse2-64.asm
++++ b/simd/jdcolext-sse2-64.asm
+@@ -41,6 +41,7 @@
+         global  EXTN(jsimd_ycc_rgb_convert_sse2)
+ 
+ EXTN(jsimd_ycc_rgb_convert_sse2):
++        _endbr64
+         push    rbp
+         mov     rax,rsp                         ; rax = original rbp
+         sub     rsp, byte 4
+diff --git a/simd/jdcolext-sse2.asm b/simd/jdcolext-sse2.asm
+index 682aef3..51b5388 100644
+--- a/simd/jdcolext-sse2.asm
++++ b/simd/jdcolext-sse2.asm
+@@ -43,6 +43,7 @@
+         global  EXTN(jsimd_ycc_rgb_convert_sse2)
+ 
+ EXTN(jsimd_ycc_rgb_convert_sse2):
++        _endbr32
+         push    ebp
+         mov     eax,esp                         ; eax = original ebp
+         sub     esp, byte 4
+diff --git a/simd/jdmrgext-mmx.asm b/simd/jdmrgext-mmx.asm
+index 63f45cf..c088eb8 100644
+--- a/simd/jdmrgext-mmx.asm
++++ b/simd/jdmrgext-mmx.asm
+@@ -42,6 +42,7 @@
+         global  EXTN(jsimd_h2v1_merged_upsample_mmx)
+ 
+ EXTN(jsimd_h2v1_merged_upsample_mmx):
++        _endbr32
+         push    ebp
+         mov     eax,esp                         ; eax = original ebp
+         sub     esp, byte 4
+@@ -411,6 +412,7 @@ EXTN(jsimd_h2v1_merged_upsample_mmx):
+         global  EXTN(jsimd_h2v2_merged_upsample_mmx)
+ 
+ EXTN(jsimd_h2v2_merged_upsample_mmx):
++        _endbr32
+         push    ebp
+         mov     ebp,esp
+         push    ebx
+diff --git a/simd/jdmrgext-sse2-64.asm b/simd/jdmrgext-sse2-64.asm
+index ad74c5f..d580d5b 100644
+--- a/simd/jdmrgext-sse2-64.asm
++++ b/simd/jdmrgext-sse2-64.asm
+@@ -41,6 +41,7 @@
+         global  EXTN(jsimd_h2v1_merged_upsample_sse2)
+ 
+ EXTN(jsimd_h2v1_merged_upsample_sse2):
++        _endbr64
+         push    rbp
+         mov     rax,rsp                         ; rax = original rbp
+         sub     rsp, byte 4
+@@ -448,6 +449,7 @@ EXTN(jsimd_h2v1_merged_upsample_sse2):
+         global  EXTN(jsimd_h2v2_merged_upsample_sse2)
+ 
+ EXTN(jsimd_h2v2_merged_upsample_sse2):
++        _endbr64
+         push    rbp
+         mov     rax,rsp
+         mov     rbp,rsp
+diff --git a/simd/jdmrgext-sse2.asm b/simd/jdmrgext-sse2.asm
+index b50f698..6625784 100644
+--- a/simd/jdmrgext-sse2.asm
++++ b/simd/jdmrgext-sse2.asm
+@@ -43,6 +43,7 @@
+         global  EXTN(jsimd_h2v1_merged_upsample_sse2)
+ 
+ EXTN(jsimd_h2v1_merged_upsample_sse2):
++        _endbr32
+         push    ebp
+         mov     eax,esp                         ; eax = original ebp
+         sub     esp, byte 4
+@@ -466,6 +467,7 @@ EXTN(jsimd_h2v1_merged_upsample_sse2):
+         global  EXTN(jsimd_h2v2_merged_upsample_sse2)
+ 
+ EXTN(jsimd_h2v2_merged_upsample_sse2):
++        _endbr32
+         push    ebp
+         mov     ebp,esp
+         push    ebx
+diff --git a/simd/jdsample-mmx.asm b/simd/jdsample-mmx.asm
+index 5e4fa7a..4ec823d 100644
+--- a/simd/jdsample-mmx.asm
++++ b/simd/jdsample-mmx.asm
+@@ -60,6 +60,7 @@ PW_EIGHT        times 4 dw  8
+         global  EXTN(jsimd_h2v1_fancy_upsample_mmx)
+ 
+ EXTN(jsimd_h2v1_fancy_upsample_mmx):
++        _endbr32
+         push    ebp
+         mov     ebp,esp
+         pushpic ebx
+@@ -218,6 +219,7 @@ EXTN(jsimd_h2v1_fancy_upsample_mmx):
+         global  EXTN(jsimd_h2v2_fancy_upsample_mmx)
+ 
+ EXTN(jsimd_h2v2_fancy_upsample_mmx):
++        _endbr32
+         push    ebp
+         mov     eax,esp                         ; eax = original ebp
+         sub     esp, byte 4
+@@ -544,6 +546,7 @@ EXTN(jsimd_h2v2_fancy_upsample_mmx):
+         global  EXTN(jsimd_h2v1_upsample_mmx)
+ 
+ EXTN(jsimd_h2v1_upsample_mmx):
++        _endbr32
+         push    ebp
+         mov     ebp,esp
+ ;       push    ebx             ; unused
+@@ -645,6 +648,7 @@ EXTN(jsimd_h2v1_upsample_mmx):
+         global  EXTN(jsimd_h2v2_upsample_mmx)
+ 
+ EXTN(jsimd_h2v2_upsample_mmx):
++        _endbr32
+         push    ebp
+         mov     ebp,esp
+         push    ebx
+diff --git a/simd/jdsample-sse2-64.asm b/simd/jdsample-sse2-64.asm
+index 1faaed6..fecd438 100644
+--- a/simd/jdsample-sse2-64.asm
++++ b/simd/jdsample-sse2-64.asm
+@@ -61,6 +61,7 @@ PW_EIGHT        times 8 dw  8
+         global  EXTN(jsimd_h2v1_fancy_upsample_sse2)
+ 
+ EXTN(jsimd_h2v1_fancy_upsample_sse2):
++        _endbr64
+         push    rbp
+         mov     rax,rsp
+         mov     rbp,rsp
+@@ -203,6 +204,7 @@ EXTN(jsimd_h2v1_fancy_upsample_sse2):
+         global  EXTN(jsimd_h2v2_fancy_upsample_sse2)
+ 
+ EXTN(jsimd_h2v2_fancy_upsample_sse2):
++        _endbr64
+         push    rbp
+         mov     rax,rsp                         ; rax = original rbp
+         sub     rsp, byte 4
+@@ -500,6 +502,7 @@ EXTN(jsimd_h2v2_fancy_upsample_sse2):
+         global  EXTN(jsimd_h2v1_upsample_sse2)
+ 
+ EXTN(jsimd_h2v1_upsample_sse2):
++        _endbr64
+         push    rbp
+         mov     rax,rsp
+         mov     rbp,rsp
+@@ -589,6 +592,7 @@ EXTN(jsimd_h2v1_upsample_sse2):
+         global  EXTN(jsimd_h2v2_upsample_sse2)
+ 
+ EXTN(jsimd_h2v2_upsample_sse2):
++        _endbr64
+         push    rbp
+         mov     rax,rsp
+         mov     rbp,rsp
+diff --git a/simd/jdsample-sse2.asm b/simd/jdsample-sse2.asm
+index 1d0059e..5da10a5 100644
+--- a/simd/jdsample-sse2.asm
++++ b/simd/jdsample-sse2.asm
+@@ -60,6 +60,7 @@ PW_EIGHT        times 8 dw  8
+         global  EXTN(jsimd_h2v1_fancy_upsample_sse2)
+ 
+ EXTN(jsimd_h2v1_fancy_upsample_sse2):
++        _endbr32
+         push    ebp
+         mov     ebp,esp
+         pushpic ebx
+@@ -216,6 +217,7 @@ EXTN(jsimd_h2v1_fancy_upsample_sse2):
+         global  EXTN(jsimd_h2v2_fancy_upsample_sse2)
+ 
+ EXTN(jsimd_h2v2_fancy_upsample_sse2):
++        _endbr32
+         push    ebp
+         mov     eax,esp                         ; eax = original ebp
+         sub     esp, byte 4
+@@ -540,6 +542,7 @@ EXTN(jsimd_h2v2_fancy_upsample_sse2):
+         global  EXTN(jsimd_h2v1_upsample_sse2)
+ 
+ EXTN(jsimd_h2v1_upsample_sse2):
++        _endbr32
+         push    ebp
+         mov     ebp,esp
+ ;       push    ebx             ; unused
+@@ -639,6 +642,7 @@ EXTN(jsimd_h2v1_upsample_sse2):
+         global  EXTN(jsimd_h2v2_upsample_sse2)
+ 
+ EXTN(jsimd_h2v2_upsample_sse2):
++        _endbr32
+         push    ebp
+         mov     ebp,esp
+         push    ebx
+diff --git a/simd/jfdctflt-3dn.asm b/simd/jfdctflt-3dn.asm
+index 2191618..33df9d6 100644
+--- a/simd/jfdctflt-3dn.asm
++++ b/simd/jfdctflt-3dn.asm
+@@ -57,6 +57,7 @@ PD_1_306        times 2 dd  1.306562964876376527856643
+         global  EXTN(jsimd_fdct_float_3dnow)
+ 
+ EXTN(jsimd_fdct_float_3dnow):
++        _endbr32
+         push    ebp
+         mov     eax,esp                         ; eax = original ebp
+         sub     esp, byte 4
+diff --git a/simd/jfdctflt-sse-64.asm b/simd/jfdctflt-sse-64.asm
+index 4b64ea4..2a820d8 100644
+--- a/simd/jfdctflt-sse-64.asm
++++ b/simd/jfdctflt-sse-64.asm
+@@ -67,6 +67,7 @@ PD_1_306        times 4 dd  1.306562964876376527856643
+         global  EXTN(jsimd_fdct_float_sse)
+ 
+ EXTN(jsimd_fdct_float_sse):
++        _endbr64
+         push    rbp
+         mov     rax,rsp                         ; rax = original rbp
+         sub     rsp, byte 4
+diff --git a/simd/jfdctflt-sse.asm b/simd/jfdctflt-sse.asm
+index e7ede26..1b31cff 100644
+--- a/simd/jfdctflt-sse.asm
++++ b/simd/jfdctflt-sse.asm
+@@ -67,6 +67,7 @@ PD_1_306        times 4 dd  1.306562964876376527856643
+         global  EXTN(jsimd_fdct_float_sse)
+ 
+ EXTN(jsimd_fdct_float_sse):
++        _endbr32
+         push    ebp
+         mov     eax,esp                         ; eax = original ebp
+         sub     esp, byte 4
+diff --git a/simd/jfdctfst-mmx.asm b/simd/jfdctfst-mmx.asm
+index eb2eb9c..d9c7c24 100644
+--- a/simd/jfdctfst-mmx.asm
++++ b/simd/jfdctfst-mmx.asm
+@@ -82,6 +82,7 @@ PW_F1306        times 4 dw  F_1_306 << CONST_SHIFT
+         global  EXTN(jsimd_fdct_ifast_mmx)
+ 
+ EXTN(jsimd_fdct_ifast_mmx):
++        _endbr32
+         push    ebp
+         mov     eax,esp                         ; eax = original ebp
+         sub     esp, byte 4
+diff --git a/simd/jfdctfst-sse2-64.asm b/simd/jfdctfst-sse2-64.asm
+index 4c96685..1530012 100644
+--- a/simd/jfdctfst-sse2-64.asm
++++ b/simd/jfdctfst-sse2-64.asm
+@@ -82,6 +82,7 @@ PW_F1306        times 8 dw  F_1_306 << CONST_SHIFT
+         global  EXTN(jsimd_fdct_ifast_sse2)
+ 
+ EXTN(jsimd_fdct_ifast_sse2):
++        _endbr64
+         push    rbp
+         mov     rax,rsp                         ; rax = original rbp
+         sub     rsp, byte 4
+diff --git a/simd/jfdctfst-sse2.asm b/simd/jfdctfst-sse2.asm
+index 54856a2..e305ac8 100644
+--- a/simd/jfdctfst-sse2.asm
++++ b/simd/jfdctfst-sse2.asm
+@@ -82,6 +82,7 @@ PW_F1306        times 8 dw  F_1_306 << CONST_SHIFT
+         global  EXTN(jsimd_fdct_ifast_sse2)
+ 
+ EXTN(jsimd_fdct_ifast_sse2):
++        _endbr32
+         push    ebp
+         mov     eax,esp                         ; eax = original ebp
+         sub     esp, byte 4
+diff --git a/simd/jfdctint-mmx.asm b/simd/jfdctint-mmx.asm
+index 9142ad8..a03ad5f 100644
+--- a/simd/jfdctint-mmx.asm
++++ b/simd/jfdctint-mmx.asm
+@@ -103,6 +103,7 @@ PW_DESCALE_P2X  times 4 dw  1 << (PASS1_BITS-1)
+         global  EXTN(jsimd_fdct_islow_mmx)
+ 
+ EXTN(jsimd_fdct_islow_mmx):
++        _endbr32
+         push    ebp
+         mov     eax,esp                         ; eax = original ebp
+         sub     esp, byte 4
+diff --git a/simd/jfdctint-sse2-64.asm b/simd/jfdctint-sse2-64.asm
+index 9a0ca0f..c5c90b4 100644
+--- a/simd/jfdctint-sse2-64.asm
++++ b/simd/jfdctint-sse2-64.asm
+@@ -103,6 +103,7 @@ PW_DESCALE_P2X  times 8 dw  1 << (PASS1_BITS-1)
+         global  EXTN(jsimd_fdct_islow_sse2)
+ 
+ EXTN(jsimd_fdct_islow_sse2):
++        _endbr64
+         push    rbp
+         mov     rax,rsp                         ; rax = original rbp
+         sub     rsp, byte 4
+diff --git a/simd/jfdctint-sse2.asm b/simd/jfdctint-sse2.asm
+index db9d0bb..cdfeee5 100644
+--- a/simd/jfdctint-sse2.asm
++++ b/simd/jfdctint-sse2.asm
+@@ -103,6 +103,7 @@ PW_DESCALE_P2X  times 8 dw  1 << (PASS1_BITS-1)
+         global  EXTN(jsimd_fdct_islow_sse2)
+ 
+ EXTN(jsimd_fdct_islow_sse2):
++        _endbr32
+         push    ebp
+         mov     eax,esp                         ; eax = original ebp
+         sub     esp, byte 4
+diff --git a/simd/jidctflt-3dn.asm b/simd/jidctflt-3dn.asm
+index 99356f2..0c16289 100644
+--- a/simd/jidctflt-3dn.asm
++++ b/simd/jidctflt-3dn.asm
+@@ -65,6 +65,7 @@ PB_CENTERJSAMP  times 8 db  CENTERJSAMPLE
+         global  EXTN(jsimd_idct_float_3dnow)
+ 
+ EXTN(jsimd_idct_float_3dnow):
++        _endbr32
+         push    ebp
+         mov     eax,esp                         ; eax = original ebp
+         sub     esp, byte 4
+diff --git a/simd/jidctflt-sse.asm b/simd/jidctflt-sse.asm
+index 4d4af2f..96fef5e 100644
+--- a/simd/jidctflt-sse.asm
++++ b/simd/jidctflt-sse.asm
+@@ -75,6 +75,7 @@ PB_CENTERJSAMP  times 8 db  CENTERJSAMPLE
+         global  EXTN(jsimd_idct_float_sse)
+ 
+ EXTN(jsimd_idct_float_sse):
++        _endbr32
+         push    ebp
+         mov     eax,esp                         ; eax = original ebp
+         sub     esp, byte 4
+diff --git a/simd/jidctflt-sse2-64.asm b/simd/jidctflt-sse2-64.asm
+index bdda05d..70863f0 100644
+--- a/simd/jidctflt-sse2-64.asm
++++ b/simd/jidctflt-sse2-64.asm
+@@ -76,6 +76,7 @@ PB_CENTERJSAMP  times 16 db CENTERJSAMPLE
+         global  EXTN(jsimd_idct_float_sse2)
+ 
+ EXTN(jsimd_idct_float_sse2):
++        _endbr64
+         push    rbp
+         mov     rax,rsp                         ; rax = original rbp
+         sub     rsp, byte 4
+diff --git a/simd/jidctflt-sse2.asm b/simd/jidctflt-sse2.asm
+index a15a9c1..0eb849e 100644
+--- a/simd/jidctflt-sse2.asm
++++ b/simd/jidctflt-sse2.asm
+@@ -75,6 +75,7 @@ PB_CENTERJSAMP  times 16 db CENTERJSAMPLE
+         global  EXTN(jsimd_idct_float_sse2)
+ 
+ EXTN(jsimd_idct_float_sse2):
++        _endbr32
+         push    ebp
+         mov     eax,esp                         ; eax = original ebp
+         sub     esp, byte 4
+diff --git a/simd/jidctfst-mmx.asm b/simd/jidctfst-mmx.asm
+index 6e95bfb..095deed 100644
+--- a/simd/jidctfst-mmx.asm
++++ b/simd/jidctfst-mmx.asm
+@@ -96,6 +96,7 @@ PB_CENTERJSAMP  times 8 db  CENTERJSAMPLE
+         global  EXTN(jsimd_idct_ifast_mmx)
+ 
+ EXTN(jsimd_idct_ifast_mmx):
++        _endbr32
+         push    ebp
+         mov     eax,esp                         ; eax = original ebp
+         sub     esp, byte 4
+diff --git a/simd/jidctfst-sse2-64.asm b/simd/jidctfst-sse2-64.asm
+index 4884642..f486c7e 100644
+--- a/simd/jidctfst-sse2-64.asm
++++ b/simd/jidctfst-sse2-64.asm
+@@ -95,6 +95,7 @@ PB_CENTERJSAMP  times 16 db CENTERJSAMPLE
+         global  EXTN(jsimd_idct_ifast_sse2)
+ 
+ EXTN(jsimd_idct_ifast_sse2):
++        _endbr64
+         push    rbp
+         mov     rax,rsp                         ; rax = original rbp
+         sub     rsp, byte 4
+diff --git a/simd/jidctfst-sse2.asm b/simd/jidctfst-sse2.asm
+index f591e55..7060d1e 100644
+--- a/simd/jidctfst-sse2.asm
++++ b/simd/jidctfst-sse2.asm
+@@ -94,6 +94,7 @@ PB_CENTERJSAMP  times 16 db CENTERJSAMPLE
+         global  EXTN(jsimd_idct_ifast_sse2)
+ 
+ EXTN(jsimd_idct_ifast_sse2):
++        _endbr32
+         push    ebp
+         mov     eax,esp                         ; eax = original ebp
+         sub     esp, byte 4
+diff --git a/simd/jidctint-mmx.asm b/simd/jidctint-mmx.asm
+index 5bd1981..35080f6 100644
+--- a/simd/jidctint-mmx.asm
++++ b/simd/jidctint-mmx.asm
+@@ -109,6 +109,7 @@ PB_CENTERJSAMP  times 8 db  CENTERJSAMPLE
+         global  EXTN(jsimd_idct_islow_mmx)
+ 
+ EXTN(jsimd_idct_islow_mmx):
++        _endbr32
+         push    ebp
+         mov     eax,esp                         ; eax = original ebp
+         sub     esp, byte 4
+diff --git a/simd/jidctint-sse2-64.asm b/simd/jidctint-sse2-64.asm
+index afe1d6a..842f2dd 100644
+--- a/simd/jidctint-sse2-64.asm
++++ b/simd/jidctint-sse2-64.asm
+@@ -108,6 +108,7 @@ PB_CENTERJSAMP  times 16 db CENTERJSAMPLE
+         global  EXTN(jsimd_idct_islow_sse2)
+ 
+ EXTN(jsimd_idct_islow_sse2):
++        _endbr64
+         push    rbp
+         mov     rax,rsp                         ; rax = original rbp
+         sub     rsp, byte 4
+diff --git a/simd/jidctint-sse2.asm b/simd/jidctint-sse2.asm
+index 6c7e7d9..3482088 100644
+--- a/simd/jidctint-sse2.asm
++++ b/simd/jidctint-sse2.asm
+@@ -107,6 +107,7 @@ PB_CENTERJSAMP  times 16 db CENTERJSAMPLE
+         global  EXTN(jsimd_idct_islow_sse2)
+ 
+ EXTN(jsimd_idct_islow_sse2):
++        _endbr32
+         push    ebp
+         mov     eax,esp                         ; eax = original ebp
+         sub     esp, byte 4
+diff --git a/simd/jidctred-mmx.asm b/simd/jidctred-mmx.asm
+index ba054e3..159e4c2 100644
+--- a/simd/jidctred-mmx.asm
++++ b/simd/jidctred-mmx.asm
+@@ -117,6 +117,7 @@ PB_CENTERJSAMP  times 8 db  CENTERJSAMPLE
+         global  EXTN(jsimd_idct_4x4_mmx)
+ 
+ EXTN(jsimd_idct_4x4_mmx):
++        _endbr32
+         push    ebp
+         mov     eax,esp                         ; eax = original ebp
+         sub     esp, byte 4
+@@ -505,6 +506,7 @@ EXTN(jsimd_idct_4x4_mmx):
+         global  EXTN(jsimd_idct_2x2_mmx)
+ 
+ EXTN(jsimd_idct_2x2_mmx):
++        _endbr32
+         push    ebp
+         mov     ebp,esp
+         push    ebx
+diff --git a/simd/jidctred-sse2-64.asm b/simd/jidctred-sse2-64.asm
+index a54bbe2..539602e 100644
+--- a/simd/jidctred-sse2-64.asm
++++ b/simd/jidctred-sse2-64.asm
+@@ -116,6 +116,7 @@ PB_CENTERJSAMP  times 16 db CENTERJSAMPLE
+         global  EXTN(jsimd_idct_4x4_sse2)
+ 
+ EXTN(jsimd_idct_4x4_sse2):
++        _endbr64
+         push    rbp
+         mov     rax,rsp                         ; rax = original rbp
+         sub     rsp, byte 4
+@@ -415,6 +416,7 @@ EXTN(jsimd_idct_4x4_sse2):
+         global  EXTN(jsimd_idct_2x2_sse2)
+ 
+ EXTN(jsimd_idct_2x2_sse2):
++        _endbr64
+         push    rbp
+         mov     rax,rsp
+         mov     rbp,rsp
+diff --git a/simd/jidctred-sse2.asm b/simd/jidctred-sse2.asm
+index 232d983..0145364 100644
+--- a/simd/jidctred-sse2.asm
++++ b/simd/jidctred-sse2.asm
+@@ -115,6 +115,7 @@ PB_CENTERJSAMP  times 16 db CENTERJSAMPLE
+         global  EXTN(jsimd_idct_4x4_sse2)
+ 
+ EXTN(jsimd_idct_4x4_sse2):
++        _endbr32
+         push    ebp
+         mov     eax,esp                         ; eax = original ebp
+         sub     esp, byte 4
+@@ -426,6 +427,7 @@ EXTN(jsimd_idct_4x4_sse2):
+         global  EXTN(jsimd_idct_2x2_sse2)
+ 
+ EXTN(jsimd_idct_2x2_sse2):
++        _endbr32
+         push    ebp
+         mov     ebp,esp
+         push    ebx
+diff --git a/simd/jquant-3dn.asm b/simd/jquant-3dn.asm
+index 0b4164b..eba7485 100644
+--- a/simd/jquant-3dn.asm
++++ b/simd/jquant-3dn.asm
+@@ -37,6 +37,7 @@
+         global  EXTN(jsimd_convsamp_float_3dnow)
+ 
+ EXTN(jsimd_convsamp_float_3dnow):
++        _endbr32
+         push    ebp
+         mov     ebp,esp
+         push    ebx
+@@ -140,6 +141,7 @@ EXTN(jsimd_convsamp_float_3dnow):
+         global  EXTN(jsimd_quantize_float_3dnow)
+ 
+ EXTN(jsimd_quantize_float_3dnow):
++        _endbr32
+         push    ebp
+         mov     ebp,esp
+ ;       push    ebx             ; unused
+diff --git a/simd/jquant-mmx.asm b/simd/jquant-mmx.asm
+index aed6071..59a7f78 100644
+--- a/simd/jquant-mmx.asm
++++ b/simd/jquant-mmx.asm
+@@ -37,6 +37,7 @@
+         global  EXTN(jsimd_convsamp_mmx)
+ 
+ EXTN(jsimd_convsamp_mmx):
++        _endbr32
+         push    ebp
+         mov     ebp,esp
+         push    ebx
+@@ -142,6 +143,7 @@ EXTN(jsimd_convsamp_mmx):
+         global  EXTN(jsimd_quantize_mmx)
+ 
+ EXTN(jsimd_quantize_mmx):
++        _endbr32
+         push    ebp
+         mov     ebp,esp
+ ;       push    ebx             ; unused
+diff --git a/simd/jquant-sse.asm b/simd/jquant-sse.asm
+index 1baf88f..87f513e 100644
+--- a/simd/jquant-sse.asm
++++ b/simd/jquant-sse.asm
+@@ -37,6 +37,7 @@
+         global  EXTN(jsimd_convsamp_float_sse)
+ 
+ EXTN(jsimd_convsamp_float_sse):
++        _endbr32
+         push    ebp
+         mov     ebp,esp
+         push    ebx
+@@ -140,6 +141,7 @@ EXTN(jsimd_convsamp_float_sse):
+         global  EXTN(jsimd_quantize_float_sse)
+ 
+ EXTN(jsimd_quantize_float_sse):
++        _endbr32
+         push    ebp
+         mov     ebp,esp
+ ;       push    ebx             ; unused
+diff --git a/simd/jquantf-sse2-64.asm b/simd/jquantf-sse2-64.asm
+index ef5c1f9..b618287 100644
+--- a/simd/jquantf-sse2-64.asm
++++ b/simd/jquantf-sse2-64.asm
+@@ -38,6 +38,7 @@
+         global  EXTN(jsimd_convsamp_float_sse2)
+ 
+ EXTN(jsimd_convsamp_float_sse2):
++        _endbr64
+         push    rbp
+         mov     rax,rsp
+         mov     rbp,rsp
+@@ -112,6 +113,7 @@ EXTN(jsimd_convsamp_float_sse2):
+         global  EXTN(jsimd_quantize_float_sse2)
+ 
+ EXTN(jsimd_quantize_float_sse2):
++        _endbr64
+         push    rbp
+         mov     rax,rsp
+         mov     rbp,rsp
+diff --git a/simd/jquantf-sse2.asm b/simd/jquantf-sse2.asm
+index 1cbc267..086416a 100644
+--- a/simd/jquantf-sse2.asm
++++ b/simd/jquantf-sse2.asm
+@@ -37,6 +37,7 @@
+         global  EXTN(jsimd_convsamp_float_sse2)
+ 
+ EXTN(jsimd_convsamp_float_sse2):
++        _endbr32
+         push    ebp
+         mov     ebp,esp
+         push    ebx
+@@ -117,6 +118,7 @@ EXTN(jsimd_convsamp_float_sse2):
+         global  EXTN(jsimd_quantize_float_sse2)
+ 
+ EXTN(jsimd_quantize_float_sse2):
++        _endbr32
+         push    ebp
+         mov     ebp,esp
+ ;       push    ebx             ; unused
+diff --git a/simd/jquanti-sse2-64.asm b/simd/jquanti-sse2-64.asm
+index 66c4e51..65c8564 100644
+--- a/simd/jquanti-sse2-64.asm
++++ b/simd/jquanti-sse2-64.asm
+@@ -38,6 +38,7 @@
+         global  EXTN(jsimd_convsamp_sse2)
+ 
+ EXTN(jsimd_convsamp_sse2):
++        _endbr64
+         push    rbp
+         mov     rax,rsp
+         mov     rbp,rsp
+@@ -114,6 +115,7 @@ EXTN(jsimd_convsamp_sse2):
+         global  EXTN(jsimd_quantize_sse2)
+ 
+ EXTN(jsimd_quantize_sse2):
++        _endbr64
+         push    rbp
+         mov     rax,rsp
+         mov     rbp,rsp
+diff --git a/simd/jquanti-sse2.asm b/simd/jquanti-sse2.asm
+index aea8604..4ed539e 100644
+--- a/simd/jquanti-sse2.asm
++++ b/simd/jquanti-sse2.asm
+@@ -37,6 +37,7 @@
+         global  EXTN(jsimd_convsamp_sse2)
+ 
+ EXTN(jsimd_convsamp_sse2):
++        _endbr32
+         push    ebp
+         mov     ebp,esp
+         push    ebx
+@@ -119,6 +120,7 @@ EXTN(jsimd_convsamp_sse2):
+         global  EXTN(jsimd_quantize_sse2)
+ 
+ EXTN(jsimd_quantize_sse2):
++        _endbr32
+         push    ebp
+         mov     ebp,esp
+ ;       push    ebx             ; unused
+diff --git a/simd/jsimdcpu.asm b/simd/jsimdcpu.asm
+index 599083b..03ae0cb 100644
+--- a/simd/jsimdcpu.asm
++++ b/simd/jsimdcpu.asm
+@@ -31,6 +31,7 @@
+         global  EXTN(jpeg_simd_cpu_support)
+ 
+ EXTN(jpeg_simd_cpu_support):
++        _endbr32
+         push    ebx
+ ;       push    ecx             ; need not be preserved
+ ;       push    edx             ; need not be preserved
+diff --git a/simd/jsimdext.inc b/simd/jsimdext.inc
+index f28db60..abc3493 100644
+--- a/simd/jsimdext.inc
++++ b/simd/jsimdext.inc
+@@ -367,6 +367,14 @@ const_base:
+ 
+ %endif
+ 
++%imacro _endbr32 0
++        dd 0xfb1e0ff3
++%endmacro
++
++%imacro _endbr64 0
++        dd 0xfa1e0ff3
++%endmacro
++
+ ; --------------------------------------------------------------------------
+ ;  Defines picked up from the C headers
+ ;
