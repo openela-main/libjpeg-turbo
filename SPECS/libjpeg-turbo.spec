@@ -1,6 +1,6 @@
 Name:           libjpeg-turbo
 Version:        2.0.90
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        A MMX/SSE2/SIMD accelerated library for manipulating JPEG image files
 License:        IJG
 URL:            http://sourceforge.net/projects/libjpeg-turbo
@@ -11,6 +11,7 @@ Patch1:         libjpeg-turbo-CET.patch
 Patch3:         libjpeg-turbo-CVE-2021-20205.patch
 Patch4:         libjpeg-turbo-CVE-2021-37972.patch
 Patch5:         libjpeg-turbo-CVE-2021-46822.patch
+Patch6:         libjpeg-turbo-2.0.90-cve-2021-29390.patch
 
 BuildRequires:  gcc
 BuildRequires:  cmake
@@ -86,7 +87,6 @@ export LDFLAGS="$RPM_LD_FLAGS -Wl,-z,ibt -Wl,-z,shstk"
          -DFLOATTEST:STRING="fp-contract" \
 %endif
          -DENABLE_STATIC:BOOL=NO
-
 %cmake_build
 
 %install
@@ -182,6 +182,10 @@ export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
 %{_libdir}/pkgconfig/libturbojpeg.pc
 
 %changelog
+* Tue Jan 09 2024 Matej Mužila <mmuzila@redhat.com> - 2.0.90.7
+- Fix CVE-2021-29390
+- Resolves: RHEL-5413
+
 * Thu Jul 21 2022 Matej Mužila <mmuzila@redhat.com> - 2.0.90-6
 - Fix CVE-2021-46822
 - Resolves: CVE-2021-46822
