@@ -1,6 +1,6 @@
 Name:           libjpeg-turbo
 Version:        1.5.3
-Release:        12%{?dist}
+Release:        14%{?dist}
 Summary:        A MMX/SSE2/SIMD accelerated library for manipulating JPEG image files
 License:        IJG
 URL:            http://sourceforge.net/projects/libjpeg-turbo
@@ -15,6 +15,11 @@ Patch5:         libjpeg-turbo-coverity.patch
 Patch6:         libjpeg-turbo-CET.patch
 Patch7:         libjpeg-turbo-CVE-2018-14498.patch
 Patch8:         libjpeg-turbo-CVE-2020-17541.patch
+# from upstream, for < 2.0.5, RHEL-87364
+# https://github.com/libjpeg-turbo/libjpeg-turbo/commit/3de15e0c344d11d4b90f4a47136467053eb2d09a
+# https://github.com/libjpeg-turbo/libjpeg-turbo/commit/dd830b3ffe30a76fbe8c1f13ebc7483c9ff792e5
+Patch9:         libjpeg-turbo-CVE-2020-13790pre.patch
+Patch10:        libjpeg-turbo-CVE-2020-13790.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -76,15 +81,17 @@ manipulate JPEG files using the TurboJPEG library.
 
 %prep
 %setup -q
-%patch0 -p1 -b .noinst
-%patch1 -p1 -b .header-files
-%patch2 -p1 -b .CVE-2018-11813
-%patch3 -p1 -b .CVE-2018-1152
-%patch4 -p1 -b .honor-naflags
-%patch5 -p1 -b .coverity
-%patch6 -p1 -b .CET
-%patch7 -p1 -b .CVE-2018-14498
-%patch8 -p1 -b .CVE-2020-17541
+%patch -P 0 -p1 -b .noinst
+%patch -P 1 -p1 -b .header-files
+%patch -P 2 -p1 -b .CVE-2018-11813
+%patch -P 3 -p1 -b .CVE-2018-1152
+%patch -P 4 -p1 -b .honor-naflags
+%patch -P 5 -p1 -b .coverity
+%patch -P 6 -p1 -b .CET
+%patch -P 7 -p1 -b .CVE-2018-14498
+%patch -P 8 -p1 -b .CVE-2020-17541
+%patch -P 9 -p2 -b .CVE-2020-13790pre
+%patch -P 10 -p2 -b .CVE-2020-13790
 
 %build
 autoreconf -vif
@@ -188,6 +195,12 @@ make test %{?_smp_mflags}
 %{_libdir}/pkgconfig/libturbojpeg.pc
 
 %changelog
+* Tue May 06 2025 Michal Hlavinka <mhlavink@redhat.com> - 1.5.3-14
+- updated previous fix (RHEL-87364)
+
+* Tue Apr 22 2025 Michal Hlavinka <mhlavink@redhat.com> - 1.5.3-13
+- fix CVE-2020-13790: heap-based buffer over-read in get_rgb_row (RHEL-87364)
+
 * Thu Jul 15 2021 Nikola Forró <nforro@redhat.com> - 1.5.3-12
 - Add missing license file (#1982572)
 
